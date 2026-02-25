@@ -4,31 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hello, World — Marco Lobato</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <main class="card">
-    <div class="badge">Available for work</div>
-
-    <h1>Hello, I'm<br><span class="name">Marco Lobato</span></h1>
-    <p class="role">Product Designer &amp; Prototyper</p>
+    <h1><span class="name">Marco Lobato</span></h1>
+    <p class="role">Human-Centered Product and User Experience Design</p>
 
     <p class="bio">
-      I design digital products that feel intuitive and look intentional.
-      This page is my first Claude Code project — a simple setup check
-      before building real things.
+      I design product experiences people can rely on in high-stakes moments.
     </p>
 
     <div class="links">
       <a href="https://github.com" class="btn btn-primary">GitHub</a>
+      <a href="https://www.linkedin.com/in/marcolobato/" class="btn btn-primary">LinkedIn</a>
       <a href="#" class="btn btn-secondary">Portfolio (coming soon)</a>
     </div>
 
     <footer class="footer">
-      Built with HTML &amp; CSS · Deployed with GitHub Pages
+      <button class="email-btn" onclick="copyEmail(this)" aria-label="Copy email address">
+        ✉ marcolobato.ux@gmail.com
+      </button>
     </footer>
   </main>
+
+  <script>
+    function copyEmail(btn) {
+      navigator.clipboard.writeText('marcolobato.ux@gmail.com');
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = '✉ marcolobato.ux@gmail.com', 2000);
+    }
+  </script>
 
 </body>
 </html>
