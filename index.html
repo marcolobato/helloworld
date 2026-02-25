@@ -15,7 +15,9 @@
     (function () {
       const saved = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.body.className = saved || (prefersDark ? 'dark-high-contrast' : 'light-high-contrast');
+      const theme = saved || (prefersDark ? 'dark-high-contrast' : 'light-high-contrast');
+      document.body.classList.remove('light-high-contrast', 'dark-high-contrast');
+      document.body.classList.add(theme);
     })();
   </script>
 
@@ -60,9 +62,11 @@
   <script>
     function toggleTheme() {
       const isDark = document.body.classList.contains('dark-high-contrast');
-      const next = isDark ? 'light-high-contrast' : 'dark-high-contrast';
-      document.body.className = next;
-      localStorage.setItem('theme', next);
+      const remove = isDark ? 'dark-high-contrast' : 'light-high-contrast';
+      const add = isDark ? 'light-high-contrast' : 'dark-high-contrast';
+      document.body.classList.remove(remove);
+      document.body.classList.add(add);
+      localStorage.setItem('theme', add);
     }
 
     function copyEmail(btn) {

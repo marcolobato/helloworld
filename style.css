@@ -62,11 +62,11 @@ body {
   background: var(--md-sys-color-surface-container);
 }
 
-/* Show moon in light mode (clicking switches to dark) */
-.light-high-contrast .icon-sun  { display: none; }
-.light-high-contrast .icon-moon { display: block; }
+/* Default: moon visible (light mode), sun hidden */
+.icon-sun  { display: none; }
+.icon-moon { display: block; }
 
-/* Show sun in dark mode (clicking switches to light) */
+/* Dark mode: swap to sun */
 .dark-high-contrast .icon-moon { display: none; }
 .dark-high-contrast .icon-sun  { display: block; }
 
@@ -164,6 +164,11 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
+}
+
+.email-btn svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .email-btn:hover {
