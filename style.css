@@ -1,0 +1,161 @@
+/* ─── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Typography ───────────────────────────────────────── */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --color-bg:      #0f0f11;
+  --color-surface: #1a1a1f;
+  --color-border:  #2a2a32;
+  --color-accent:  #7c6ef2;
+  --color-accent2: #5fd4c3;
+  --color-text:    #e8e8f0;
+  --color-muted:   #8888a0;
+
+  --radius: 20px;
+  --max-width: 520px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+/* ─── Card ─────────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 3rem 3rem 2rem;
+  max-width: var(--max-width);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  /* subtle glow */
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 32px 64px rgba(0,0,0,0.4),
+    0 0 80px rgba(124,110,242,0.06);
+}
+
+/* ─── Badge ─────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent2);
+  background: rgba(95, 212, 195, 0.08);
+  border: 1px solid rgba(95, 212, 195, 0.2);
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.badge::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ─── Heading ───────────────────────────────────────────── */
+h1 {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.name {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Role ──────────────────────────────────────────────── */
+.role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  letter-spacing: 0.01em;
+}
+
+/* ─── Bio ───────────────────────────────────────────────── */
+.bio {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  border-left: 2px solid var(--color-border);
+  padding-left: 1rem;
+}
+
+/* ─── Links ─────────────────────────────────────────────── */
+.links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6em 1.4em;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+.footer {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-border);
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.25rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
