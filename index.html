@@ -71,9 +71,14 @@
 
     function copyEmail(btn) {
       const label = btn.querySelector('.email-label');
+      const icon = btn.querySelector('svg');
       navigator.clipboard.writeText('marcolobato.ux@gmail.com');
+      icon.style.display = 'none';
       label.textContent = '✓ Copied!';
-      setTimeout(() => label.textContent = 'marcolobato.ux@gmail.com', 2000);
+      setTimeout(() => {
+        icon.style.display = 'block';
+        label.textContent = 'marcolobato.ux@gmail.com';
+      }, 2000);
     }
   </script>
 
