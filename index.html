@@ -7,11 +7,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme/light-hc.css" />
+  <link rel="stylesheet" href="theme/dark-hc.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="light-high-contrast"><script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.body.className = saved || (prefersDark ? 'dark-high-contrast' : 'light-high-contrast');
+    })();
+  </script>
 
   <main class="card">
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <!-- Sun: shown in dark mode to switch to light -->
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+      <!-- Moon: shown in light mode to switch to dark -->
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+
     <h1><span class="name">Marco Lobato</span></h1>
     <p class="role">Human-Centered Product and User Experience Design</p>
 
@@ -27,16 +48,28 @@
 
     <footer class="footer">
       <button class="email-btn" onclick="copyEmail(this)" aria-label="Copy email address">
-        ✉ marcolobato.ux@gmail.com
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="20" height="16" x="2" y="4" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        <span class="email-label">marcolobato.ux@gmail.com</span>
       </button>
     </footer>
   </main>
 
   <script>
+    function toggleTheme() {
+      const isDark = document.body.classList.contains('dark-high-contrast');
+      const next = isDark ? 'light-high-contrast' : 'dark-high-contrast';
+      document.body.className = next;
+      localStorage.setItem('theme', next);
+    }
+
     function copyEmail(btn) {
+      const label = btn.querySelector('.email-label');
       navigator.clipboard.writeText('marcolobato.ux@gmail.com');
-      btn.textContent = '✓ Copied!';
-      setTimeout(() => btn.textContent = '✉ marcolobato.ux@gmail.com', 2000);
+      label.textContent = '✓ Copied!';
+      setTimeout(() => label.textContent = 'marcolobato.ux@gmail.com', 2000);
     }
   </script>
 
