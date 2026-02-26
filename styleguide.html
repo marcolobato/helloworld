@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide — Marco Lobato</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme/light-hc.css" />
+  <link rel="stylesheet" href="theme/dark-hc.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- sg-body overrides the index's grid/center layout so this page flows normally -->
+<body class="light-high-contrast sg-body"><script>
+  /* Same theme init as index.html — reads localStorage before first paint
+     so the page never flashes the wrong theme */
+  (function () {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark-high-contrast' : 'light-high-contrast');
+    document.body.classList.remove('light-high-contrast', 'dark-high-contrast');
+    document.body.classList.add(theme);
+  })();
+</script>
+
+<!-- ─── Header ──────────────────────────────────────────── -->
+<header class="sg-header">
+
+  <!-- Back link with a left-chevron SVG icon -->
+  <a href="index.html" class="sg-back" aria-label="Back to home">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m15 18-6-6 6-6"/>
+    </svg>
+    Back
+  </a>
+
+  <h1 class="sg-header-title">Style Guide</h1>
+
+  <!-- Theme toggle — .sg-header .theme-toggle resets its position to static
+       so it sits at the right end of the flex row instead of floating absolute -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+    </svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
+</header>
+
+<!-- ─── Main ───────────────────────────────────────────── -->
+<main class="sg-main">
+
+
+  <!-- ══ Colors ════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-section-title">Colors</h2>
+
+    <!-- Primary group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Primary</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-primary)"></div>
+          <span class="sg-swatch-name">Primary</span>
+          <span class="sg-swatch-token">--md-sys-color-primary</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-primary)"></div>
+          <span class="sg-swatch-name">On Primary</span>
+          <span class="sg-swatch-token">--md-sys-color-on-primary</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-primary-container)"></div>
+          <span class="sg-swatch-name">Primary Container</span>
+          <span class="sg-swatch-token">--md-sys-color-primary-container</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-primary-container)"></div>
+          <span class="sg-swatch-name">On Primary Container</span>
+          <span class="sg-swatch-token">--md-sys-color-on-primary-container</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Secondary group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Secondary</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-secondary)"></div>
+          <span class="sg-swatch-name">Secondary</span>
+          <span class="sg-swatch-token">--md-sys-color-secondary</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-secondary)"></div>
+          <span class="sg-swatch-name">On Secondary</span>
+          <span class="sg-swatch-token">--md-sys-color-on-secondary</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-secondary-container)"></div>
+          <span class="sg-swatch-name">Secondary Container</span>
+          <span class="sg-swatch-token">--md-sys-color-secondary-container</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tertiary group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Tertiary</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-tertiary)"></div>
+          <span class="sg-swatch-name">Tertiary</span>
+          <span class="sg-swatch-token">--md-sys-color-tertiary</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-tertiary)"></div>
+          <span class="sg-swatch-name">On Tertiary</span>
+          <span class="sg-swatch-token">--md-sys-color-on-tertiary</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Surface group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Surface</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-background)"></div>
+          <span class="sg-swatch-name">Background</span>
+          <span class="sg-swatch-token">--md-sys-color-background</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-surface)"></div>
+          <span class="sg-swatch-name">Surface</span>
+          <span class="sg-swatch-token">--md-sys-color-surface</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-surface-container-lowest)"></div>
+          <span class="sg-swatch-name">Container Lowest</span>
+          <span class="sg-swatch-token">--md-sys-color-surface-container-lowest</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-surface-container-low)"></div>
+          <span class="sg-swatch-name">Container Low</span>
+          <span class="sg-swatch-token">--md-sys-color-surface-container-low</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-surface-container)"></div>
+          <span class="sg-swatch-name">Container</span>
+          <span class="sg-swatch-token">--md-sys-color-surface-container</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-surface-container-high)"></div>
+          <span class="sg-swatch-name">Container High</span>
+          <span class="sg-swatch-token">--md-sys-color-surface-container-high</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-surface-container-highest)"></div>
+          <span class="sg-swatch-name">Container Highest</span>
+          <span class="sg-swatch-token">--md-sys-color-surface-container-highest</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Text / On-Surface group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Text</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-background)"></div>
+          <span class="sg-swatch-name">On Background</span>
+          <span class="sg-swatch-token">--md-sys-color-on-background</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-surface)"></div>
+          <span class="sg-swatch-name">On Surface</span>
+          <span class="sg-swatch-token">--md-sys-color-on-surface</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-surface-variant)"></div>
+          <span class="sg-swatch-name">On Surface Variant</span>
+          <span class="sg-swatch-token">--md-sys-color-on-surface-variant</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Outline group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Outline</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-outline)"></div>
+          <span class="sg-swatch-name">Outline</span>
+          <span class="sg-swatch-token">--md-sys-color-outline</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-outline-variant)"></div>
+          <span class="sg-swatch-name">Outline Variant</span>
+          <span class="sg-swatch-token">--md-sys-color-outline-variant</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Error group -->
+    <div class="sg-color-group">
+      <p class="sg-color-group-label">Error</p>
+      <div class="sg-swatch-row">
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-error)"></div>
+          <span class="sg-swatch-name">Error</span>
+          <span class="sg-swatch-token">--md-sys-color-error</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-on-error)"></div>
+          <span class="sg-swatch-name">On Error</span>
+          <span class="sg-swatch-token">--md-sys-color-on-error</span>
+        </div>
+
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: var(--md-sys-color-error-container)"></div>
+          <span class="sg-swatch-name">Error Container</span>
+          <span class="sg-swatch-token">--md-sys-color-error-container</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ══ Typography ════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-section-title">Typography</h2>
+
+    <!-- Name — uses the existing .name class; inline styles replicate the h1 sizing rules -->
+    <div class="sg-type-example">
+      <p class="sg-type-label">Name — Fraunces Bold · clamp(2rem, 6vw, 2.75rem) · .name</p>
+      <span class="name" style="font-size: clamp(2rem, 6vw, 2.75rem); line-height: 1.15; letter-spacing: -0.03em; display: block;">Marco Lobato</span>
+    </div>
+
+    <!-- Role — uses the existing .role class exactly as-is -->
+    <div class="sg-type-example">
+      <p class="sg-type-label">Role — Fraunces Medium · 1rem · .role</p>
+      <p class="role">Human-Centered Product and User Experience Design</p>
+    </div>
+
+    <!-- Bio — uses the existing .bio class exactly as-is (note the left border) -->
+    <div class="sg-type-example">
+      <p class="sg-type-label">Bio — Fraunces Regular · 0.95rem · .bio</p>
+      <p class="bio">I design product experiences people can rely on in high-stakes moments.</p>
+    </div>
+
+    <!-- System sans-serif — used for UI labels, meta text, and code -->
+    <div class="sg-type-example">
+      <p class="sg-type-label">UI Label — System Sans-Serif · 0.875rem · body / var(--font-sans)</p>
+      <span style="font-family: var(--font-sans); font-size: 0.875rem; color: var(--md-sys-color-on-surface);">The quick brown fox jumps over the lazy dog</span>
+    </div>
+
+  </section>
+
+
+  <!-- ══ Components ════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-section-title">Components</h2>
+
+    <!-- Buttons — .links wrapper + all three button variants -->
+    <div class="sg-component-example">
+      <p class="sg-component-label">Buttons</p>
+      <div class="links">
+        <a href="#" class="btn btn-primary">Primary Button</a>
+        <a href="#" class="btn btn-secondary">Secondary Button</a>
+        <a href="#" class="btn btn-disabled" aria-disabled="true">Disabled Button</a>
+      </div>
+    </div>
+
+    <!-- Theme Toggle — the toggle sits absolute at top-right of this box,
+         just like it does inside .card on index.html -->
+    <div class="sg-component-example">
+      <p class="sg-component-label">Theme Toggle</p>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <!-- This empty div gives the box enough height so the toggle doesn't clip out -->
+      <div style="height: 1.5rem;" aria-hidden="true"></div>
+    </div>
+
+    <!-- Email Button — same markup as in index.html, fully interactive -->
+    <div class="sg-component-example">
+      <p class="sg-component-label">Email Button</p>
+      <button class="email-btn" onclick="copyEmail(this)" aria-label="Copy email address">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="20" height="16" x="2" y="4" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        <span class="email-label">marcolobato.ux@gmail.com</span>
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- ══ Card ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-section-title">Card</h2>
+
+    <!-- The real .card component — exactly as it appears on index.html.
+         .sg-demo-name scales the name to 1.75rem so we don't need a second <h1> -->
+    <div class="card">
+
+      <p class="name sg-demo-name">Marco Lobato</p>
+      <p class="role">Human-Centered Product and User Experience Design</p>
+
+      <p class="bio">
+        I design product experiences people can rely on in high-stakes moments.
+      </p>
+
+      <div class="links">
+        <a href="#" class="btn btn-primary">GitHub</a>
+        <a href="#" class="btn btn-primary">LinkedIn</a>
+        <a href="#" class="btn btn-disabled" aria-disabled="true">Portfolio (coming soon)</a>
+      </div>
+
+      <footer class="footer">
+        <button class="email-btn" onclick="copyEmail(this)" aria-label="Copy email address">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <span class="email-label">marcolobato.ux@gmail.com</span>
+        </button>
+      </footer>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+<script>
+  /* Same functions as index.html — theme toggle + email copy */
+
+  function toggleTheme() {
+    const isDark = document.body.classList.contains('dark-high-contrast');
+    const remove = isDark ? 'dark-high-contrast' : 'light-high-contrast';
+    const add = isDark ? 'light-high-contrast' : 'dark-high-contrast';
+    document.body.classList.remove(remove);
+    document.body.classList.add(add);
+    localStorage.setItem('theme', add);
+  }
+
+  function copyEmail(btn) {
+    const label = btn.querySelector('.email-label');
+    const icon = btn.querySelector('svg');
+    navigator.clipboard.writeText('marcolobato.ux@gmail.com');
+    icon.style.display = 'none';
+    label.textContent = '✓ Copied!';
+    setTimeout(() => {
+      icon.style.display = 'block';
+      label.textContent = 'marcolobato.ux@gmail.com';
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>

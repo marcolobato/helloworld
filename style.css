@@ -143,6 +143,21 @@ h1 {
   color: var(--md-sys-color-on-surface-variant);
 }
 
+.btn-disabled {
+  /* Filled gray surface with muted text — signals "not available" */
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-outline-variant);
+  border: none;
+  /* Prevent clicks and remove interactive cursor */
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Cancel the lift animation — a disabled button should not respond to hover */
+.btn-disabled:hover {
+  transform: none;
+}
+
 /* ─── Footer ─────────────────────────────────────────────── */
 .footer {
   margin-top: 0.5rem;
@@ -172,5 +187,229 @@ h1 {
 }
 
 .email-btn:hover {
+  color: var(--md-sys-color-on-background);
+}
+
+/* ─── Styleguide ─────────────────────────────────────────── */
+/*
+  All classes below are prefixed .sg- and are ONLY used on
+  styleguide.html. They never affect index.html.
+*/
+
+/* Overrides the body grid/center layout for the styleguide page.
+   body.sg-body is more specific than body, so it wins. */
+body.sg-body {
+  display: block;
+  padding: 0;
+}
+
+/* Sticky bar at the top with back link, title, and theme toggle */
+.sg-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--md-sys-color-surface-container-lowest);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding: 0.875rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* When .theme-toggle lives inside .sg-header, cancel its absolute positioning
+   so it sits naturally at the right end of the flex row */
+.sg-header .theme-toggle {
+  position: static;
+  margin-left: auto;
+}
+
+/* Back navigation link in the header */
+.sg-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.sg-back:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+/* Page title inside the header */
+.sg-header-title {
+  font-family: "Fraunces", serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Centered content column — all sections live inside this */
+.sg-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* One section block (Colors, Typography, etc.) */
+.sg-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Section title — small uppercase label with a rule beneath */
+.sg-section-title {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  padding-bottom: 0.75rem;
+}
+
+/* ── Color swatches ── */
+
+/* One semantic color group (e.g. "Primary", "Surface") */
+.sg-color-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* Small label above each color group */
+.sg-color-group-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.65;
+}
+
+/* Flex row that holds individual swatches */
+.sg-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* One color swatch (colored box + labels) */
+.sg-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 110px;
+  max-width: 150px;
+}
+
+/* The colored rectangle itself */
+.sg-swatch-color {
+  height: 52px;
+  border-radius: 10px;
+  /* Border makes white/black swatches visible against any background */
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* Human-readable name, e.g. "Primary Container" */
+.sg-swatch-name {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--md-sys-color-on-background);
+  line-height: 1.3;
+}
+
+/* The CSS variable name in monospace */
+.sg-swatch-token {
+  font-family: "Courier New", monospace;
+  font-size: 0.62rem;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* ── Typography examples ── */
+
+/* Box that holds one type style example */
+.sg-type-example {
+  padding: 1.25rem 1.5rem;
+  background: var(--md-sys-color-surface-container-lowest);
+  border-radius: 12px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* Small descriptor label above the type specimen */
+.sg-type-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.65;
+}
+
+/* ── Component examples ── */
+
+/* Box that holds one component demo.
+   position:relative lets the .theme-toggle stay absolutely
+   positioned inside it, just like it is inside .card */
+.sg-component-example {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--md-sys-color-surface-container-lowest);
+  border-radius: 12px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Small label at the top of a component example */
+.sg-component-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.65;
+}
+
+/* Scale down the .name class for the Card demo so we don't
+   need a second <h1> on the styleguide page */
+.sg-demo-name {
+  font-size: 1.75rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+/* Small link at the bottom of the card on index.html */
+.sg-link {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  margin-top: 0.75rem;
+  transition: color 0.15s ease;
+}
+
+.sg-link:hover {
   color: var(--md-sys-color-on-background);
 }
