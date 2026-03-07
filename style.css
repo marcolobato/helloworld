@@ -208,6 +208,8 @@ body.sg-body {
   position: sticky;
   top: 0;
   z-index: 10;
+  width: 100%;            /* always span the full screen width */
+  box-sizing: border-box; /* padding counts inside the width, not on top of it */
   background: var(--md-sys-color-surface-container-lowest);
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
   padding: 0.875rem 2rem;
@@ -404,7 +406,7 @@ body.sg-body {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   color: var(--md-sys-color-on-surface-variant);
-  text-decoration: none;
+  text-decoration: underline;
   letter-spacing: 0.02em;
   margin-top: 0.75rem;
   transition: color 0.15s ease;
